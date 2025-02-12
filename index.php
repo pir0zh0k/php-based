@@ -7,37 +7,18 @@
 </head>
 <body>
     <?php
-    // $num = 28;
-    // $num = 0b11100;
-    // $num = 034;
-    // $num = 0x1C;
+    $a = 10;
+    $b = "20";
 
-    // $num = 1.15;
-
-    // $isLesson = true;
-
-    // $a = 10;
-    // $b = 5;
-
-    // $result = "$a + $b";
-
-    // echo $result;
-
-    // $result = '$a + $b';
-
-    // echo $result;
-
-    // $text = "Модель \"Apple 2\"";
-
-    // echo $text;
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
-    $a = NULL;
-
-    echo $a;
+    echo is_integer($a);
+    echo is_string($a);
+    echo is_double($a);
+    echo is_numeric($a);
+    echo is_bool($a);
+    echo is_scalar($a);
+    echo is_null($a);
+    echo is_array($a);
+    echo is_object($a);
     ?>
 </body>
 </html>
