@@ -7,12 +7,14 @@
 </head>
 <body>
     <?php
-    $var = 22;
-    $strVar = (string)$var;
 
-    echo gettype($var);
-    echo "<br/>";
-    echo gettype($strVar);
+    $a = "Hello";
+    $b = "World";
+
+    $a .= $b;
+
+    echo $a;
+
     ?>
 </body>
 </html>
