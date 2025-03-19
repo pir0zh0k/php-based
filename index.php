@@ -7,21 +7,11 @@
 </head>
 <body>
     <?php
+        $arr = Array("Hello", "Goodbye");
+        $arr2 = ["start", "end"];
 
-    const PI = 3.14;
-
-    // define("PI", 3.15); 
-
-    echo PI;
-
-    // define("SOME_NUMBER", 10);
-
-    // echo __FILE__;
-    // echo __LINE__;
-    // echo __DIR__;
-
-    // echo defined("SOME_NUMBER");
-
+        echo $arr;
+        echo $arr2;
     ?>
 </body>
 </html>
