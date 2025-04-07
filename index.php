@@ -7,27 +7,47 @@
 </head>
 <body>
     <?php
-        // $phone = ["name" => "IPhone", "price" => 80000, "100Гц"];
-        // var_dump($phone);
-        // echo $phone["name"];
-        // echo "<br/>";
-        // echo $phone[0];
+        $arr1 = [1, 2, 3, 4, 5];
+        $arr2 = ["Tom", "Jhon", "Daniel", "Bobby"];
+        $arr3 = ["name" => "Jhon", "age" => 25, "weight" => 45];
+        $os = ["Windows 10", "Windows 7", "Windows 8"];
 
-        // $friends = [["Alice", "Tom"],["Kate", "Bob"]];
-        // var_dump($friends);
-        // echo $friends[0][0];
+        // var_dump(is_array($arr1));
 
-        $car = [
-            "name" => "Audi",
-            "specifications" => [
-                "engine_power" => 150,
-                "engine_litre" => 6,
-            ]
-        ];
+        // var_dump(count($arr1));
+        // var_dump(sizeof($arr2));
 
-        var_dump($car);
+        // var_dump(shuffle($arr2));
+        // var_dump($arr2);
 
-        echo $car["specifications"]["engine_power"];
+        // $a = 1;
+        // $b = 2;
+        // $c = 3;
+
+        // $data = compact("a", "b", "c");
+        // var_dump($data);
+
+        // SORT_REGULAR
+        // SORT_NUMERIC
+        // SORT_STRING
+
+        // var_dump(asort($arr1, SORT_NUMERIC));
+        // var_dump(asort($arr2, SORT_STRING));
+
+        // var_dump($arr1);
+        // var_dump($arr2);
+
+        // arsort($arr1);
+
+        // var_dump($arr1);
+
+        // krsort($arr3);
+
+        // var_dump($arr3);
+
+        natsort($os);
+
+        var_dump($os);
     ?>
 </body>
 </html>
