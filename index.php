@@ -7,47 +7,23 @@
 </head>
 <body>
     <?php
-        $arr1 = [1, 2, 3, 4, 5];
-        $arr2 = ["Tom", "Jhon", "Daniel", "Bobby"];
-        $arr3 = ["name" => "Jhon", "age" => 25, "weight" => 45];
-        $os = ["Windows 10", "Windows 7", "Windows 8"];
+        $fruits = ['apple', 'banana', 'cherry'];
+        $user = ['name' => 'Jhon'];
 
-        // var_dump(is_array($arr1));
+        // $fruits[] = 'orange';
+        // array_push($fruits, 'orange', 'melon');
+        // $user['age'] = 21;
 
-        // var_dump(count($arr1));
-        // var_dump(sizeof($arr2));
+        // unset($user['name']);
+        // $fruits = array_values($fruits);
 
-        // var_dump(shuffle($arr2));
-        // var_dump($arr2);
+        // array_pop($fruits);
 
-        // $a = 1;
-        // $b = 2;
-        // $c = 3;
+        array_shift($fruits);
 
-        // $data = compact("a", "b", "c");
-        // var_dump($data);
-
-        // SORT_REGULAR
-        // SORT_NUMERIC
-        // SORT_STRING
-
-        // var_dump(asort($arr1, SORT_NUMERIC));
-        // var_dump(asort($arr2, SORT_STRING));
-
-        // var_dump($arr1);
-        // var_dump($arr2);
-
-        // arsort($arr1);
-
-        // var_dump($arr1);
-
-        // krsort($arr3);
-
-        // var_dump($arr3);
-
-        natsort($os);
-
-        var_dump($os);
+        var_dump($fruits);
+        echo '<br/>';
+        var_dump($user);
     ?>
 </body>
 </html>
