@@ -7,23 +7,29 @@
 </head>
 <body>
     <?php
-        $fruits = ['apple', 'banana', 'cherry'];
-        $user = ['name' => 'Jhon'];
+        $age = 11;
 
-        // $fruits[] = 'orange';
-        // array_push($fruits, 'orange', 'melon');
-        // $user['age'] = 21;
+        $result = $age > 12 ? "Вам больше 12" : "Вам меньше 12";
 
-        // unset($user['name']);
-        // $fruits = array_values($fruits);
+        echo $result;
 
-        // array_pop($fruits);
+        // if($age == 18) {
+        //     echo "Вам есть 18";
+        // } 
+        // elseif($age > 12) {
+        //     echo "Вам больше 12-ти";
+        // }
+        // else {
+        //     echo "Вам нет 18-ти";
+        // }
 
-        array_shift($fruits);
-
-        var_dump($fruits);
-        echo '<br/>';
-        var_dump($user);
+        // if ($age == 18):
+        //     echo "Вам есть 18";
+        // elseif($age > 12):
+        //     echo "Вам больше 12-ти";
+        // else:
+        //     echo "Вам нет 18-ти";
+        // endif;
     ?>
 </body>
 </html>
