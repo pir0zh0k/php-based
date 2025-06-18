@@ -7,29 +7,39 @@
 </head>
 <body>
     <?php
-        $age = 11;
+        $a = 10;
 
-        $result = $age > 12 ? "Вам больше 12" : "Вам меньше 12";
+        switch($a) {
+            case "10":
+                echo "Вы ввели 10";
+                break;
+            case 11:
+                echo "Вы ввели 11";
+                break;
+            default:
+                echo "";
+                break;
+        }
+
+        // switch($a):
+        //     case 11:
+        //         echo "Вы ввели 11";
+        //         break;
+        //     case 12:
+        //         echo "Вы ввели 12";
+        //         break;
+        //     default:
+        //         echo "";
+        //         break;
+        // endswitch
+
+        $result = match ($a) {
+             "10" => "Вы ввели 10",
+             11 => "Вы ввели 11",
+             default => "Совпадений не найдено"
+        };
 
         echo $result;
-
-        // if($age == 18) {
-        //     echo "Вам есть 18";
-        // } 
-        // elseif($age > 12) {
-        //     echo "Вам больше 12-ти";
-        // }
-        // else {
-        //     echo "Вам нет 18-ти";
-        // }
-
-        // if ($age == 18):
-        //     echo "Вам есть 18";
-        // elseif($age > 12):
-        //     echo "Вам больше 12-ти";
-        // else:
-        //     echo "Вам нет 18-ти";
-        // endif;
     ?>
 </body>
 </html>
