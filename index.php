@@ -7,39 +7,22 @@
 </head>
 <body>
     <?php
-        $a = 10;
+        for($i = 0; $i < 10; $i++){
+            for($j = 0; $j < 10; $j++) {
+                echo '$j + $i: ' . $j + $i . "<br>";
+            }
 
-        switch($a) {
-            case "10":
-                echo "Вы ввели 10";
-                break;
-            case 11:
-                echo "Вы ввели 11";
-                break;
-            default:
-                echo "";
-                break;
+            echo $i . "<br>";
         }
 
-        // switch($a):
-        //     case 11:
-        //         echo "Вы ввели 11";
-        //         break;
-        //     case 12:
-        //         echo "Вы ввели 12";
-        //         break;
-        //     default:
-        //         echo "";
-        //         break;
-        // endswitch
+        // $i = 0;
 
-        $result = match ($a) {
-             "10" => "Вы ввели 10",
-             11 => "Вы ввели 11",
-             default => "Совпадений не найдено"
-        };
+        // while($i < 10)  echo $i++ . "<br>";
 
-        echo $result;
+        // do {
+        //     echo $i . "<br/>";
+        //     $i++;
+        // } while($i < 10);
     ?>
 </body>
 </html>
