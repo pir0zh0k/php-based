@@ -6,23 +6,24 @@
     <title>PHP</title>
 </head>
 <body>
-    <?php
-        for($i = 0; $i < 10; $i++){
-            for($j = 0; $j < 10; $j++) {
-                echo '$j + $i: ' . $j + $i . "<br>";
-            }
-
-            echo $i . "<br>";
-        }
-
-        // $i = 0;
-
-        // while($i < 10)  echo $i++ . "<br>";
-
-        // do {
-        //     echo $i . "<br/>";
-        //     $i++;
-        // } while($i < 10);
-    ?>
+    <table>
+        <?php
+        for ($i = 1; $i < 10; $i++):
+        ?>
+            <tr>
+                <?php
+                for($j = 1; $j < 10; $j++):
+                ?>
+                    <td>
+                        <?php echo $i * $j;?>
+                    </td>
+                <?php
+                endfor;
+                ?>
+            </tr>
+        <?php
+        endfor;
+        ?>
+    </table>
 </body>
 </html>
