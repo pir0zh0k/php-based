@@ -7,20 +7,15 @@
 </head>
 <body>
     <?php
-            // function printHello($name, $age) {
-            //     echo "Hello World " . $name . " " . $age;
-            // }
+        $a = 8;
+        $b = 10;
 
-            // printHello("Pavel", 23);
+        $showNumber = function($c) use($a, $b) {
+            return $a + $b +$c;
+        };
 
-            function multiply($a, $b) {
-                return $a * $b;
-                echo "Hello world";
-            }
-
-            $result = multiply(4, 5);
-
-            echo $result;
+        $result = $showNumber(20);
+        echo $result;
     ?>
 </body>
 </html>
