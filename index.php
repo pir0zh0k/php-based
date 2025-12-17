@@ -7,25 +7,34 @@
 </head>
 <body>
     <?php
-        // function myGenerator() {
-        //     yield 1;
-        //     yield from [2, 3, 4];
-        //     yield 5;
+        // $tom = "Tom";
+        // $sam = &$tom;
+
+        // $sam = "Sam";
+
+        // echo "Tom = " . $tom;
+        // echo "Sam = " . $sam;
+
+        // function square(&$a) {
+        //     $a *= $a;
+        //     echo "a = " . $a;
         // }
 
-        // foreach(myGenerator() as $number) {
-        //     echo $number;
-        // }
+        // $number = 5;
 
-        function generateNumbers($start, $end) {
-            for($i = $start; $i < $end; $i++) {
-                yield $i;
-            }
+        // square($number);
+        // echo "<br/> Number = " . $number;
+
+        function &checkName(&$name) {
+            if($name === "admin") $name = "Tom";
+            return $name;
         }
 
-        foreach(generateNumbers(4, 10) as $number) {
-            echo $number;
-        }
+        $userName = "admin";
+        $checkedName = &checkName($userName);
+
+        echo "<br/> userName = " . $userName;
+        echo "<br/> checkedName = " . $checkedName;
     ?>
 </body>
 </html>
