@@ -7,45 +7,104 @@
 </head>
 <body>
     <?php
-        function generatePassword(int $upperCount = 2, int $lowerCount = 5, int $digitCount = 3, int $specialCount = 2) {
-            $uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
-                  'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-            
-            $lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-                  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+       
+
+    //    $params = [
+    //     'limit' => 1,
+    //     'select' => 'title,price'
+    //    ];
+
+    $newProduct = [
+        'title' => "Gaming Keyboard",
+        "description" => "Best gaming keyboard",
+        "price" => 129.99,
+        "brand" => "Samsung",
+        "category" => "electronics",
+        "stock" => 50
+    ];
+
+    $jsonProduct = json_encode($newProduct);
+
+    $url = "https://dummyjson.com/products/add";
+
+    $ch = curl_init($url);
+
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => $jsonProduct,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ],
+        CURLOPT_TIMEOUT => 10
+    ]);
+
+    $response = curl_exec($ch);
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    if(curl_errno($ch)) {
+        echo "Ошибка запроса: " . curl_error($ch);
+    }
+
+
+    curl_close($ch);
+
     
-            $digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    
-            $special = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '=', '+'];
 
-            $password = [];
+    if($httpCode === 200 || $httpCode === 201) {
 
-            for($i = 0; $i < $upperCount; $i++) {
-                $randomIndex = array_rand($uppercase);
-                $password[] = $uppercase[$randomIndex];
-            }
+        $result = json_decode($response, true);
 
-            for($i = 0; $i < $lowerCount; $i++) {
-                $randomIndex = array_rand($lowercase);
-                $password[] = $lowercase[$randomIndex];
-            }
+        echo "<h3>Результат:</h3>";
 
-            for($i = 0; $i < $digitCount; $i++) {
-                $randomIndex = array_rand($digits);
-                $password[] = $digits[$randomIndex];
-            }
+        echo "<p>Товар успешно добавлен</p>";
 
-            for($i = 0; $i < $specialCount; $i++) {
-                $randomIndex = array_rand($special);
-                $password[] = $special[$randomIndex];
-            }
+        echo "<h2>ID: " . $result['id'] . " </h2>";
 
-            shuffle($password);
+        echo "<h2>Title: " . $result['title'] . "</h2>";
 
-            return implode('', $password);
-        }
+    } else {
+        echo "<h3>Ошибка добавления товара</h3>";
+        echo "HTTP код: " . $httpCode;
+    }
 
-        echo generatePassword()
+    //    $fullUrl = $url . '?' . http_build_query($params);
+
+    //    curl_setopt($ch, CURLOPT_URL, $fullUrl);
+    //    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    //     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    //     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+    //     curl_setopt($ch, CURLOPT_USERAGENT, "PHP-API/1.0");
+
+    //     $response = curl_exec($ch);
+
+    //     if(curl_errno($ch)) {
+    //         echo "Ошибка подключения " . curl_error($ch);
+    //     } else {
+    //         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    //         if($httpCode === 200) {
+    //             $data = json_decode($response, true);
+
+    //             echo "<h3>Список товаров: " . $data['limit'] . " из " . $data['total'] . "</h3>";
+
+    //             foreach($data['products'] as $product) {
+    //                 echo "<h1>" . $product['title'] . "</h1>";
+    //                 echo "<h2> " . $product['price'] . "</h2>";
+    //             }
+
+    //             var_dump($data);
+
+    //         } else {
+    //             echo "Ошибка API. HTTP Код: ". $httpCode;
+    //         }
+    //     }
+       
+       
     ?>
 </body>
 </html>
