@@ -6,105 +6,68 @@
     <title>PHP</title>
 </head>
 <body>
-    <?php
-       
+    <form action="handler.php" method="POST">
+        <label>
+            Имя: <br>
+            <input type="text" name="name">
+        </label>
+        <br>
+        <br>
 
-    //    $params = [
-    //     'limit' => 1,
-    //     'select' => 'title,price'
-    //    ];
+        <label>
+            Пол:
+        </label>
+        <br>
 
-    $newProduct = [
-        'title' => "Gaming Keyboard",
-        "description" => "Best gaming keyboard",
-        "price" => 129.99,
-        "brand" => "Samsung",
-        "category" => "electronics",
-        "stock" => 50
-    ];
+        <label>
+            Мужской:
+            <input type="radio" name="gender" value="male">
+        </label>
 
-    $jsonProduct = json_encode($newProduct);
+        <label>Женский:
+            <input type="radio" name="gender" value="female">
+        </label>
 
-    $url = "https://dummyjson.com/products/add";
+        <br/>
+        <br/>
 
-    $ch = curl_init($url);
+        <label>
+            Город:
+            <select name="city" id="">
+                <option value="msk">Москва</option>
+                <option value="spb">Санкт-Петербург</option>
+            </select>
+        </label>
 
-    curl_setopt_array($ch, [
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => $jsonProduct,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HTTPHEADER => [
-            'Content-Type: application/json',
-            'Accept: application/json'
-        ],
-        CURLOPT_TIMEOUT => 10
-    ]);
+        <br/>
+        <br/>
 
-    $response = curl_exec($ch);
+        <label>Хобби:</label>
+        <br/>
 
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        <label>
+            <input type="checkbox" name="hobbies[]" value="sport"> Спорт
+        </label>
+        <br/>
 
-    if(curl_errno($ch)) {
-        echo "Ошибка запроса: " . curl_error($ch);
-    }
+        <label>
+            <input type="checkbox" name="hobbies[]" value="music"> Музыка
+        </label>
+        <br/>
 
+        <label>
+            <input type="checkbox" name="hobbies[]" value="books"> Чтение
+        </label>
+        <br/>
+        <br/>
+        <br/>
 
-    curl_close($ch);
+        <label><input type="checkbox" name="agree" value="yes">Согласен с условиями</label>
+        <br>
 
-    
+        <input type="hidden" name="secret" value="скрытая информация">
 
-    if($httpCode === 200 || $httpCode === 201) {
-
-        $result = json_decode($response, true);
-
-        echo "<h3>Результат:</h3>";
-
-        echo "<p>Товар успешно добавлен</p>";
-
-        echo "<h2>ID: " . $result['id'] . " </h2>";
-
-        echo "<h2>Title: " . $result['title'] . "</h2>";
-
-    } else {
-        echo "<h3>Ошибка добавления товара</h3>";
-        echo "HTTP код: " . $httpCode;
-    }
-
-    //    $fullUrl = $url . '?' . http_build_query($params);
-
-    //    curl_setopt($ch, CURLOPT_URL, $fullUrl);
-    //    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    //     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    //     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-
-    //     curl_setopt($ch, CURLOPT_USERAGENT, "PHP-API/1.0");
-
-    //     $response = curl_exec($ch);
-
-    //     if(curl_errno($ch)) {
-    //         echo "Ошибка подключения " . curl_error($ch);
-    //     } else {
-    //         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-    //         if($httpCode === 200) {
-    //             $data = json_decode($response, true);
-
-    //             echo "<h3>Список товаров: " . $data['limit'] . " из " . $data['total'] . "</h3>";
-
-    //             foreach($data['products'] as $product) {
-    //                 echo "<h1>" . $product['title'] . "</h1>";
-    //                 echo "<h2> " . $product['price'] . "</h2>";
-    //             }
-
-    //             var_dump($data);
-
-    //         } else {
-    //             echo "Ошибка API. HTTP Код: ". $httpCode;
-    //         }
-    //     }
-       
-       
-    ?>
+        <button type="submit">Отправить</button>
+    </form>
 </body>
 </html>
