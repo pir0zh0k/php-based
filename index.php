@@ -1,13 +1,22 @@
 <?php
-    session_start();
+    $allowed_themes = ['light', 'dark'];
 
-    if(isset($_SESSION['user'])) {
-        echo "Привет";
+    if(isset($_GET['theme']) && in_array($_GET['theme'], $allowed_themes, true)) {
+        $theme = $_GET['theme'];
 
-        echo "<a href='dashboard.php'>Перейти в кабинет</a>";
-        echo "<a href='logout.php'>Выйти</a>";
+        setcookie('theme', $theme, [
+            'expires' => time() + 60 * 60 *24 * 30,
+            'path' => "/",
+            'secure' => !empty($_SERVER['HTTPS']),
+            'httponly' => true,
+            'samesite' => 'lax'
+        ]);
+    } else {
+        $theme = $_COOKIE['theme'] ?? 'light';
 
-        exit;
+        if(!in_array($theme, $allowed_themes, true)) {
+            $theme = 'light';
+        }
     }
 ?>
 
@@ -23,16 +32,10 @@
         .error { color: red; }
     </style>
 </head>
-<body>
-    <form action="login.php" method="POST">
-        <input type="text" name="login" placeholder="Имя пользователя" required> 
-        <br/>
-        <input type="password" name="password" placeholder="Пароль" required>
-        <button type="submit">Войти</button>
-    </form>
+<body style="background: <?= $theme === 'dark' ? '#222' : '#fff' ?>; color: <?= $theme === 'dark' ? '#fff' : '#222' ?>;">
+    <h2>Тема сайта: <?= htmlspecialchars($theme) ?></h2>
 
-    <?php if(isset($_GET['error'])): ?>
-        <p class="error">Неверный логин или пароль</p>
-    <?php endif;?>
+    <a href="?theme=light">Светлая тема</a>
+    <a href="?theme=dark">Темная тема</a>
 </body>
 </html>
